@@ -1,12 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity,Dimensions, TouchableHighlight,  } from "react-native";
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Dimensions, TouchableHighlight, TouchableWithoutFeedback,  } from "react-native";
 import CheckBox from "@react-native-community/checkbox";
 import RememberMeCheckbox from "./checkbox";
+import { NavigationContainer } from '@react-navigation/native';
+import SignIn from "./signin";
 
 
 
-export default function Login() {
+
+export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -57,15 +60,25 @@ export default function Login() {
             <TouchableOpacity>
                 <Text style={styles.forgot_button}>Mot de passe oublié ?</Text>
             </TouchableOpacity>
-            <RememberMeCheckbox /> 
-            <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.loginText}>CONNEXION</Text>
-            </TouchableOpacity>
+            <RememberMeCheckbox />
+           
+ <View style={styles.loginBtn}>
+      <Button
+        title="Connexion"
+        onPress={() => navigation.navigate('Profil')}
+      />
+    </View>
             <View>
-            <Text style={styles.inscription}>Tu n'as pas encore de compte ?<TouchableOpacity><Text style={styles.question}> Clique ici</Text></TouchableOpacity></Text>
-            </View>
+                <Text style={styles.inscription}>Tu n'as pas encore de compte ?</Text>
+                <View style={styles.question}>
+            <Button
+                         title="Clique ici"
+                        onPress={() => navigation.navigate('SignIn')}      />
+                        </View>
+                                    </View>
+
         </View>
-        
+
     );
 }
 const styles = StyleSheet.create({
@@ -110,6 +123,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 40,
         backgroundColor: "#0404B4",
+        color: "#FFFFFF"
     },
     loginText: {
         color: "#FFFFFF",
@@ -128,15 +142,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 10,
         color: "#BDBDBD",
-        marginLeft: -130,
+        marginLeft: 0,
     },
     question: {
-        height: 15,
-        color: 'red',
-        top: 5,
-        position: 'absolute',
+        marginLeft:200,
+        color:"black",
+        textDecorationLine: 'none',
 
 
-      },
+    },
 }
 );

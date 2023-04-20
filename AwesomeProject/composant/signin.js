@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity,Dimensions, TouchableHighlight,  } from "react-native";
 import RememberMeCheckbox from "./checkbox";
 import DatePicker from 'react-native-date-picker'
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
 
-export default function SignIn() {
+export default function SignIn( {navigation} ) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstname, setFirstname] = useState("")
