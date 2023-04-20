@@ -18,6 +18,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="Profil" component={Profil} />
+        
 
 
       </Stack.Navigator>
